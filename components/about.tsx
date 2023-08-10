@@ -1,16 +1,23 @@
-"use client"
+"use client";
 
-import React from 'react'
+import React, { useEffect } from "react";
 import SectionHeading from "@/components/section-heading";
-import {motion} from "framer-motion";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { useActiveSectionContext } from "@/context/active-section-context";
+import { useSectionInView } from "@/lib/hooks";
 
 export default function About() {
+  const { ref} = useSectionInView("About")
+
   return (
     <motion.section
-      className="mb-8 max-w-[45rem] text-center leading-8 sm:mb-40"
+      ref={ref}
+      className="mb-8 max-w-[45rem] scroll-mt-28 text-center leading-8 sm:mb-40"
       initial={{ opacity: 0, y: 100 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.175 }}
+      id="about"
     >
       <SectionHeading title="About me" />
       <p className="mb-3">
@@ -40,5 +47,5 @@ export default function About() {
         learning how to play the guitar.
       </p>
     </motion.section>
-  )
+  );
 }

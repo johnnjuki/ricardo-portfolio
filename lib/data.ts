@@ -13,7 +13,7 @@ export const links = [
   },
   {
     name: "About",
-    hash: "#about",
+    hash: "#about.tsx",
   },
   {
     name: "Projects",

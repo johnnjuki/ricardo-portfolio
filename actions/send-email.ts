@@ -2,7 +2,6 @@
 
 import { Resend } from "resend";
 import { getErrorMessage, validateString } from "@/lib/utils";
-import { text } from "stream/consumers";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -26,16 +25,16 @@ export const sendEmail = async (formData: FormData) => {
   try {
     data = await resend.emails.send({
       from: "Contact form <onboarding@resend.dev>",
-      to: "njukijohn2000@gmail.com",
+      to: "johnnjuki.dev@gmail.com",
       subject: "Message from contact form",
       reply_to: senderEmail as string,
       text: message as string,
     });
   } catch (error: unknown) {
-    getErrorMessage(error)
+    getErrorMessage(error);
   }
 
   return {
     data,
-  }
+  };
 };
